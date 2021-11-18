@@ -11,6 +11,7 @@ namespace ClevInvest.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        public string Message { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -19,7 +20,7 @@ namespace ClevInvest.Pages
 
         public void OnGet()
         {
-
+            Message = $"Welcome to our first Razor Page Application\n{DateTime.Now.ToLongTimeString()}";
         }
     }
 }
