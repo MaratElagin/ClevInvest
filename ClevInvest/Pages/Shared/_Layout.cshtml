@@ -5,46 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - CleverInvest</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/layout.css"/>
+    <link rel="stylesheet" href="~/css/mainpage.css"/>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 p-0 mc">
-        <div class="container">
-            <img src="images/logo_picture.svg" alt ="logo">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Clever Invest</a>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 mc">
+        <div class="container shift_top">
+            <a class="navbar-brand mainLink" asp-area="" asp-page="/Index"><img src="/images/logo_picture.svg" alt="logo" id="logo"> Clever Invest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <div class="navbar-collapse collapse d-sm-inline-flex">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Инвестиции</a>
+                        <a class="nav-link text-dark a_nav" id="firstLink" asp-area="" asp-page="/Index">Инвестиции</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Investments/Investments">Акции</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/Investments">Акции</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Investments/InvestmentsHistory">Облигации</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/InvestmentsHistory">Облигации</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Портфель</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Портфель</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Контакты</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Контакты</a>
                     </li>
                 </ul>
+                <div id="login_register">
+                    <table>
+                        <td>
+                            <a asp-area="" asp-page="">Войти</a>
+                        </td>
+                        <td id ="separator">|</td>
+                        <td>
+                            <a asp-area="" asp-page="">Регистрация</a>
+                        </td>
+                    </table>
+                </div>
             </div>
         </div>
     </nav>
-    
 </header>
 
 @RenderBody()
 
+<footer class="border-top footer text-muted mcf" id = "footer">
+    <div class="container">
+        &copy; 2021 - ClevInvest. Елагин Марат.
+    </div>
+</footer>
 
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

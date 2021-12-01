@@ -1,0 +1,89 @@
+﻿body{
+    background: #FFE8D6 !important;
+}
+
+/*header*/
+
+.mc {
+    margin-left: 215px;
+    margin-right: 215px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgba(183, 183, 164, 0.5);
+}
+
+.shift_top {
+    margin-top: 27px;
+    position: relative;
+    right: 50px;
+}
+
+/*Clever Invest*/
+.mainLink {
+    margin-left: 14px;
+    font-family: Montserrat Bold, "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.a_nav {
+    margin-left: 37px;
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.a_nav:hover{
+    text-shadow: 0 0 .65px black, 0 0 .65px black;
+    text-decoration: underline;
+    text-decoration-color:#B7B7A4;
+}
+
+#firstLink {
+    margin-left: 64px;
+}
+
+#login_register{
+    position: relative;
+    top:-50px;
+    right:160px;
+}
+
+td a{
+    color: #A5A58D !important;
+    text-decoration: none;
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#separator{
+    color: #A5A58D;
+}
+
+td a:hover {
+    text-shadow: 0 0 .65px #B7B7A4, 0 0 .65px #B7B7A4;
+    text-decoration: underline;
+    text-decoration-color: #B7B7A4;
+}
+
+/*footer*/
+.mcf{
+    margin-left: 215px;
+    margin-right: 215px;
+    padding-bottom: 20px;
+    border-top: 2px solid rgba(183, 183, 164, 0.5) !important
+}
+
+#footer{
+    width: 1106px;
+    position:fixed;
+    top: 95%;
+}
+
+
+
+
+
+
