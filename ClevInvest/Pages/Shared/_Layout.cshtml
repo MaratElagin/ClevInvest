@@ -12,31 +12,32 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 mc">
-        <div class="container shift_top">
-            <a class="navbar-brand mainLink" asp-area="" asp-page="/Index"><img src="/images/logo_picture.svg" alt="logo" id="logo"> Clever Invest</a>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 mc pl-0">
+        <div class="container shift_top ml-0">
+            <a class="navbar-brand mainLink ml-0 mr-0" asp-area="" asp-page="/Index"><img src="/images/logo_picture.svg" alt="logo" id="logo"> Clever Invest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark a_nav" id="firstLink" asp-area="" asp-page="/Index">Инвестиции</a>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav" row>
+                    <li class="nav-item col-xs-2">
+                        <a class="nav-link text-dark a_nav" id="firstLink" asp-area="" asp-page="/Investments/Investments">Инвестиции</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-xs-2">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/Investments">Акции</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-xs-2">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/InvestmentsHistory">Облигации</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-xs-2">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Портфель</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item col-xs-2">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Контакты</a>
                     </li>
                 </ul>
+            </div>
                 <div id="login_register">
                     <table>
                         <td>
@@ -48,14 +49,13 @@
                         </td>
                     </table>
                 </div>
-            </div>
         </div>
     </nav>
 </header>
 
 @RenderBody()
 
-<footer class="border-top footer text-muted mcf" id = "footer">
+<footer class="border-top footer text-muted mcf" id ="footer">
     <div class="container">
         &copy; 2021 - ClevInvest. Елагин Марат.
     </div>
