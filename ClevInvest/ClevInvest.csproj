@@ -18,6 +18,7 @@
       <_ContentIncludedByDefault Remove="Pages\Investments\Shared\MyLayout.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\Investments\Shared\_ViewImports.cshtml" />
       <_ContentIncludedByDefault Remove="Pages\Investments\Shared\_ViewStart.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Partial\1.cshtml" />
     </ItemGroup>
 
 </Project>
