@@ -1,54 +1,40 @@
-﻿body{
+﻿body {
     background: #FFE8D6 !important;
 }
 
-/*header*/
-
-.mc {
-    margin-left: 215px;
-    margin-right: 215px;
-    padding-bottom: 20px;
-    border-bottom: 2px solid rgba(183, 183, 164, 0.5);
-    width: 1170px;
-}
-
-.shift_top {
-    margin-top: 27px;
-    padding: 0;
-    width: 1170px;
-    max-width: 1170px;
-    position: relative;
+.myMl40{
+    margin-left: 30px;
 }
 
 /*Clever Invest*/
 .mainLink {
-    margin-left: 14px;
+    margin-left: 24px;
     font-family: Montserrat Bold, "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 30px;
     font-weight: bold;
 }
 
 .a_nav {
-    margin-left: 50px;
+    margin-left: 35px;
     font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
 }
 
-.a_nav:hover{
+.a_nav:hover {
     text-shadow: 0 0 .65px black, 0 0 .65px black;
     text-decoration: underline;
-    text-decoration-color:#B7B7A4;
+    text-decoration-color: #B7B7A4;
 }
 
-#login_register{
+#login_register {
     position: absolute;
-    top:0;
-    left: 85%;
+    top: 0;
+    right: 0;
 }
 
-td a{
+td a {
     color: #A5A58D !important;
     text-decoration: none;
     font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
@@ -57,7 +43,7 @@ td a{
     font-size: 14px;
 }
 
-#separator{
+#separator {
     color: #A5A58D;
 }
 
@@ -68,23 +54,41 @@ td a:hover {
 }
 
 /*footer*/
-.mcf{
-    margin-left: 215px;
-    margin-right: 215px;
-    padding-bottom: 20px;
-    border-top: 2px solid rgba(183, 183, 164, 0.5) !important
+.myBorderColor {
+    border-top: 2px solid rgba(183, 183, 164, 0.5) !important;
 }
 
-#footer{
-    width: 1106px;
-    position:fixed;
-    top: 95%;
+#dropdownMenuButton{
+    border: none;
+    background-color: transparent;
+    color: black;
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
 }
 
-
-ul{
-    width: 858px;
+#dropdownMenuButton:hover{
+    text-shadow: 0 0 .65px black, 0 0 .65px black;
+    text-decoration: underline;
+    text-decoration-color: #B7B7A4;
 }
 
+.dropdown:hover .dropdown-menu{
+    display: block;
+    transition: all 2s ease-in-out;
+}
 
+.dropdown-menu{
+    background-color: #ddbea9 !important;
+}
 
+.dropdown-item{
+    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.dropdown-item:hover{
+    background-color: #a5a58d;
+}

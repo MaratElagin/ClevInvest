@@ -6,7 +6,6 @@ namespace ClevInvest.Pages.Investments
     {
         public void OnGet()
         {
-            
         }
     }
 }

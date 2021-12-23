@@ -5,7 +5,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.12" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ClevInvest.Models\ClevInvest.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Components\Header.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Investments\Shared\MyLayout.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Investments\Shared\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Pages\Investments\Shared\_ViewStart.cshtml" />
     </ItemGroup>
 
 </Project>

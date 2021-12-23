@@ -8,55 +8,70 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/layout.css"/>
-    <link rel="stylesheet" href="~/css/mainpage.css"/>
+    <link rel="stylesheet" href="~/css/style.css"/>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light box-shadow mb-3 mc pl-0">
-        <div class="container shift_top ml-0">
+    <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-light box-shadow mb-3">
+        <div class="container position-relative p-0">
             <a class="navbar-brand mainLink ml-0 mr-0" asp-area="" asp-page="/Index"><img src="/images/logo_picture.svg" alt="logo" id="logo"> Clever Invest</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="navbar-collapse collapse">
-                <ul class="navbar-nav" row>
-                    <li class="nav-item col-xs-2">
-                        <a class="nav-link text-dark a_nav" id="firstLink" asp-area="" asp-page="/Investments/Investments">Инвестиции</a>
+                <ul class="navbar-nav ml-4">
+                    <li class="nav-item">
+                        <div class="dropdown myMl40">
+                            <a class="dropdown-item nav-link dropdown-toggle ml-0 pb-0" id="dropdownMenuButton" asp-area="" asp-page="/Investments/Investments">Инвестиции</a>
+                            <div class="dropdown-menu p-0" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item nav-link ml-0" asp-area="" asp-page="/Investments/InvestmentsHistory">История инвестиций</a>
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item nav-link" asp-area="" asp-page="/Investments/InvestmentsHistory">Для чего нужно инвестировать</a>
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item nav-link" asp-area="" asp-page="/Investments/InvestmentsHistory">Как начать инвестировать</a>
+                                <div class="dropdown-divider m-0"></div>
+                                <a class="dropdown-item nav-link" asp-area="" asp-page="/InvestmentsHistory">Статьи и литература</a>
+                            </div>
+                        </div>
                     </li>
-                    <li class="nav-item col-xs-2">
+                    <li class="nav-item">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/Investments">Акции</a>
                     </li>
-                    <li class="nav-item col-xs-2">
+                    <li class="nav-item">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Investments/InvestmentsHistory">Облигации</a>
                     </li>
-                    <li class="nav-item col-xs-2">
+                    <li class="nav-item">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Портфель</a>
                     </li>
-                    <li class="nav-item col-xs-2">
+                    <li class="nav-item">
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Контакты</a>
                     </li>
                 </ul>
             </div>
-                <div id="login_register">
-                    <table>
-                        <td>
-                            <a asp-area="" asp-page="">Войти</a>
-                        </td>
-                        <td id ="separator">|</td>
-                        <td>
-                            <a asp-area="" asp-page="">Регистрация</a>
-                        </td>
-                    </table>
-                </div>
+            <div class="align-self-sm-baseline" id="login_register">
+                <table class="col-2">
+                    <td>
+                        <a asp-area="" asp-page="">Войти</a>
+                    </td>
+                    <td id="separator">|</td>
+                    <td>
+                        <a asp-area="" asp-page="">Регистрация</a>
+                    </td>
+                </table>
+            </div>
         </div>
     </nav>
 </header>
 
-@RenderBody()
+<div class="container">
+    <main role="main">
+        @RenderBody()
+    </main>
+</div>
 
-<footer class="border-top footer text-muted mcf" id ="footer">
-    <div class="container">
+<footer class="footer fixed-bottom text-muted mb-2">
+    <div class="container border-top myBorderColor">
         &copy; 2021 - ClevInvest. Елагин Марат.
     </div>
 </footer>

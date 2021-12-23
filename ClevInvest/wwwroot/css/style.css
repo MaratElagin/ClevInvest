@@ -1,9 +1,4 @@
-﻿.cont{
-    margin:100px 215px 300px 215px;
-    padding: 0;
-}
-
-.imageStyle{
+﻿.imageStyle{
     filter: drop-shadow(0px 7px 4px rgba(0, 0, 0, 0.25));
     border-radius: 40px;
 }
@@ -16,7 +11,7 @@
 .welcomeText{
     font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
     position: relative;
-    top:100px;
+    top:130px;
 }
 
 .welcomeText h1{
@@ -31,4 +26,9 @@
     font-style: normal;
     font-weight: normal;
     font-size: 18px;
+}
+
+#invetmentsHeader{
+    position: relative;
+    top:50px;
 }
