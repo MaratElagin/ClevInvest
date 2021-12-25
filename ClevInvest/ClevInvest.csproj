@@ -21,4 +21,13 @@
       <_ContentIncludedByDefault Remove="Pages\Partial\1.cshtml" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Remove="wwwroot\images\Articles\fin-plan.jpg" />
+      <Content Remove="wwwroot\images\404.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Include="wwwroot\test.html" />
+    </ItemGroup>
+
 </Project>

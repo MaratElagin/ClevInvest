@@ -64,6 +64,10 @@ td a:hover {
     font-size: 20px;
 }
 
+.myMl{
+    margin-left: 35px;
+}
+
 #dropdownMenuButton:hover{
     text-shadow: 0 0 .65px black, 0 0 .65px black;
     text-decoration: underline;
