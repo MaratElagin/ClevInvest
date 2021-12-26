@@ -52,11 +52,11 @@
             <div class="align-self-sm-baseline" id="login_register">
                 <table class="col-2">
                     <td>
-                        <a asp-area="" asp-page="">Войти</a>
+                        <a href="#LoginModal" data-toggle="modal">Войти</a>
                     </td>
                     <td id="separator">|</td>
                     <td>
-                        <a asp-area="" asp-page="">Регистрация</a>
+                        <a href="#RegisterModal" data-toggle="modal">Регистрация</a>
                     </td>
                 </table>
             </div>
@@ -68,6 +68,59 @@
     <main role="main">
         @RenderBody()
     </main>
+</div>
+
+
+@* login modal *@
+<div id="LoginModal" class="modal pageText" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Вход</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-justify">
+                <label for="login" class="ml-2 mb-0">Логин</label>
+                <input type="text" id="login" class="form-control inputStyle" autocomplete="off">
+                <label for="password" class="ml-2 mb-0 mt-2">Пароль</label>
+                <input type="password" id="password" class="form-control inputStyle">
+            </div>
+            <div class="modal-footer justify-content-center flex-wrap">
+                <button class="btn btn-primary w-100 btnRoundBorders">Войти</button>
+                <a class="mt-2" href="#RegisterModal" data-toggle="modal" onclick="$('#LoginModal').modal('toggle')">Ещё нет аккаунта?</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* registration modal *@
+<div id="RegisterModal" class="modal pageText" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Регистрация</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-justify">
+                <label for="username" class="ml-2 mb-0">Имя пользователя</label>
+                <input  type="text" id="username" class="form-control inputStyle" autocomplete="off">
+                <label for="login" class="ml-2 mb-0 mt-2">Логин</label>
+                <input type="text" id="r-login" class="form-control inputStyle" autocomplete="off">
+                <label for="r-password" class="ml-2 mb-0 mt-2">Пароль</label>
+                <input type="password" id="r-password" class="password form-control inputStyle">
+                <label for="rc-password" class="password ml-2 mb-0 mt-2">Подтверждение пароля</label>
+                <input type="password" id="rc-password" class="form-control inputStyle">
+            </div>
+            <div class="modal-footer justify-content-center flex-wrap">
+                <button class="btn btn-primary w-100 btnRoundBorders">Зарегестрироваться</button>
+                <a class="mt-2" href="#LoginModal" data-toggle="modal" onclick="$('#RegisterModal').modal('toggle')">Уже зарегестрированы?</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <footer class="footer navbar-fixed-bottom text-muted mb-2 mt-3">

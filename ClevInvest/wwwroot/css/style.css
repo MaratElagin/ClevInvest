@@ -112,3 +112,20 @@
     margin-bottom: 0;
     margin-left: 10px;
 }
+
+.inputStyle{
+    height: 40px;
+}
+
+.btnRoundBorders{
+    border-radius: 40px;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
