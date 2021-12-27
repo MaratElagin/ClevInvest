@@ -1,0 +1,20 @@
+﻿@page
+@model ClevInvest.Pages.LoginRegister.Login
+
+<div class="row justify-content-center">
+    <div class="col-6 pageText justify-content-center">
+        <form method="post">
+            <div class="modal-body text-justify">
+                <label asp-for="RegisteredUser.Login" class="ml-2 mb-0">Логин</label>
+                <input asp-for="RegisteredUser.Login" name="RegisteredUser.Login" type="text" class="form-control inputStyle" autocomplete="off">
+
+                <label asp-for="RegisteredUser.Password1" class="ml-2 mb-0 mt-2">Пароль</label>
+                <input asp-for="RegisteredUser.Password1" name="RegisteredUser.Password1" type="password" class="form-control inputStyle">
+            </div>
+            <div class="modal-footer justify-content-center flex-wrap">
+                <input type="submit" class="btn btn-primary w-100 btnRoundBorders" value="Войти">
+                <a class="mt-2" asp-page="/LoginRegister/Register">Ещё нет аккаунта?</a>
+            </div>
+        </form>
+    </div>
+</div>

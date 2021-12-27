@@ -5,7 +5,7 @@ namespace ClevInvest.Services.Database
 {
     public interface IArticleRepository
     {
-        IEnumerable<Article> GetAllArticles();
+        IEnumerable<Article> GetAll();
 
         Article GetArticle(int id);
     }

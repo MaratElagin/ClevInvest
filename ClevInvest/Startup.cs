@@ -25,10 +25,11 @@ namespace ClevInvest
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddDbContext<ApplicationContext>(options =>
-            //     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSession();
+            services.AddDbContext<ApplicationContext>(options =>
+                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
-            services.AddSingleton<IArticleRepository, MockArticleRepository>();
+            services.AddScoped<IArticleRepository, MockArticleRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +46,10 @@ namespace ClevInvest
                 app.UseHsts();
             }
 
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 

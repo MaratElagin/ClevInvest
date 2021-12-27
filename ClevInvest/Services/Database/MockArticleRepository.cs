@@ -40,7 +40,7 @@ namespace ClevInvest.Services.Database
             };
         }
 
-        public IEnumerable<Article> GetAllArticles()
+        public IEnumerable<Article> GetAll()
         {
             return _articlesList;
         }

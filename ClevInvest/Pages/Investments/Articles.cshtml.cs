@@ -18,7 +18,7 @@ namespace ClevInvest.Pages.Investments
 
         public void OnGet()
         {
-            ArticlesList = _db.GetAllArticles();
+            ArticlesList = _db.GetAll();
         }
     }
 }
