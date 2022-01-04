@@ -1,5 +1,4 @@
 ﻿@page
-@using ClevInvest.Models
 @model ClevInvest.Pages.Investments.Articles
 
 
@@ -8,23 +7,25 @@
         <h2>Полезные статьи</h2>
     </div>
     <div class="col col-md-9 col-8">
-        <div class="searchLine position-relative">
-            <input class="bg-transparent border-0 pl-2 form-control" id="searchInput" type="text" placeholder="Поиск по статьям">
-            <button id="searchBtn" class="pr-2">
-                <svg id="searchLogo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </div>
+        <form method="post">
+            <div class="searchLine position-relative">
+                <input asp-for="SearchText" name="SearchText" class="bg-transparent border-0 pl-2 form-control" id="searchInput" autocomplete="off" type="text" placeholder="Поиск по статьям">
+                <button type="submit" id="searchBtn" class="pr-2">
+                    <svg id="searchLogo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 
 
-<div class="row mt-5 justify-content-center">
+<div class="row mt-5">
     @foreach (var item in Model.ArticlesList)
     {
         var photoPath = $"/images/Articles/{item.PhotoPath ?? "noimage.jpg"}";
-        
+
         <div class="row col-lg-6 mt-4 col-12">
             <div class="col-md-6 col-lg-6 p-2">
                 <img src="@photoPath" alt="articlePicture" class="imageStyle img-fluid h-100" asp-append-version="true">

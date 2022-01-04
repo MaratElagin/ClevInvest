@@ -1,8 +1,12 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using ClevInvest.Infrastructure;
 using ClevInvest.Models;
 using ClevInvest.Services.Database;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -17,20 +21,44 @@ namespace ClevInvest.Pages.LoginRegister
             _db = applicationContext;
         }
 
-        [BindProperty] public User RegisteredUser { get; set; }
 
-        public void OnGet()
+        public string Error = "";
+        public IActionResult OnGet()
         {
+            return Page();
         }
 
-        public IActionResult OnPost()
+        [BindProperty]
+        public User RegisteredUser { get; set; }
+
+        public async Task<IActionResult> OnPost()
         {
+            Error = "";
             var password = Generator.HashStringMD5(RegisteredUser.Password1);
             var user = _db.Users.FirstOrDefault(u => u.Login == RegisteredUser.Login);
             if (user is null || user.Password1 != password)
-                return RedirectToPage("/NotFound");
-            HttpContext.Session.SetString("user", RegisteredUser.Login);
+            {
+                Error = "Неверный логин или пароль!";
+                return Page();
+            }
+
+            await Authenticate(user.Login, user.UserName, user.Role);
             return Redirect("/");
+        }
+        
+        private async Task Authenticate(string login, string userName, string role)
+        {
+            // создаем один claim
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimsIdentity.DefaultNameClaimType, login),
+                new Claim("role", role ?? "user"),
+                new Claim("userName", userName),
+            };
+            // создаем объект ClaimsIdentity
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+            // установка аутентификационных куки
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
     }
 }

@@ -117,9 +117,30 @@
     height: 40px;
 }
 
+/*Чтобы не менялся цвет полей при автозаполнении*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .btnRoundBorders{
     border-radius: 40px;
     width: 100%;
+}
+
+.profileImg{
+    width: 200px;
+    height: 200px;
+    border: 1px solid #6B705C;
+    border-radius: 40px;
+}
+
+.profileEdit{
+    line-height: 1.25;
+    margin-bottom: 16px;
+    border-radius: 5px;
 }
 
 

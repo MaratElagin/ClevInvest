@@ -1,24 +1,41 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using ClevInvest.Infrastructure;
 
 namespace ClevInvest.Models
 {
     public class User
     {
         public int Id { get; set; }
+        public string Role { get; set; }
 
-        [Required(ErrorMessage = "Заполните это поле!")]
+        [Required(ErrorMessage = Validation.RequiredMessage)]
+        [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
+        [MaxLength(15, ErrorMessage = Validation.MaxLengthMessage)]
+        [RegularExpression(Validation.LettersAndDigits,
+            ErrorMessage = Validation.RegularExpressionMessage)]
         public string UserName { get; set; }
 
-        [Required(ErrorMessage = "Заполните это поле!")]
+        [Required(ErrorMessage = Validation.RequiredMessage)]
+        [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
+        [MaxLength(10, ErrorMessage = Validation.MaxLengthMessage)]
+        [RegularExpression(Validation.LatinLettersAndDigits,
+            ErrorMessage = Validation.RegularExpressionMessage)]
         public string Login { get; set; }
 
-        [Required(ErrorMessage = "Заполните это поле!")]
+        [Required(ErrorMessage = Validation.RequiredMessage)]
+        [RegularExpression(Validation.LatinLettersAndDigits,
+            ErrorMessage = Validation.RegularExpressionMessage)]
+        [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
+        [MaxLength(10, ErrorMessage = Validation.MaxLengthMessage)]
         public string Password1 { get; set; }
 
         [NotMapped]
-        [Compare(nameof(Password1) ,ErrorMessage = "Пароли должны совпадать")]
+        [Required(ErrorMessage = Validation.RequiredMessage)]
+        [Compare(nameof(Password1), ErrorMessage = "Пароли должны совпадать")]
         public string Password2 { get; set; }
+        
+        public string PhotoPath { get; set; }
     }
 }

@@ -1,0 +1,25 @@
+﻿@page
+@model ClevInvest.Pages.LoginRegister.Account
+
+<div class="row pageText">
+    <h1>Профиль</h1>
+</div>
+<div class="row pageText align-items-center">
+    <div class="row col-md-8 align-items-center">
+        <div class="col-md-4 col-3">
+            <p>Псевдоним</p>
+            <p>Логин</p>
+            <p>Пароль</p>
+        </div>
+        <div class="col-md-4 col-4">
+            <input type="text" value="@Model.UserName" class="profileEdit">
+            <input type="text" class="profileEdit">
+            <input type="text" class="profileEdit">
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="profileImg d-flex">
+            <img src="/images/avatars/avatar2.png" alt="profile picture">
+        </div>
+    </div>
+</div>

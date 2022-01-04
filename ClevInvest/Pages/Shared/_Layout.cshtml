@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -7,6 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+              integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" rel="stylesheet"/>
     <link rel="stylesheet" href="~/css/layout.css"/>
     <link rel="stylesheet" href="~/css/style.css"/>
 </head>
@@ -24,7 +29,7 @@
                     <li class="nav-item">
                         <div class="dropdown">
                             <a class="dropdown-item nav-link dropdown-toggle a_nav pl-0" id="dropdownMenuButton" asp-area="" asp-page="/Investments/Investments">Инвестиции</a>
-                            <div class="dropdown-menu p-0 myMl" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-menu p-0 mt-0 myMl" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item nav-link ml-0" asp-area="" asp-page="/Investments/History">История инвестиций</a>
                                 <div class="dropdown-divider m-0"></div>
                                 <a class="dropdown-item nav-link" asp-area="" asp-page="/Investments/ForWhat">Для чего нужно инвестировать</a>
@@ -42,10 +47,10 @@
                         <a class="nav-link text-dark a_nav" asp-area="" asp-page="/StocksAndBonds/Bonds">Облигации</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Портфель</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Portfel">Портфель</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Privacy">Контакты</a>
+                        <a class="nav-link text-dark a_nav" asp-area="" asp-page="/Contact">Контакты</a>
                     </li>
                 </ul>
             </div>
@@ -53,13 +58,28 @@
             
             <div class="align-self-sm-baseline" id="login_register">
                 <table class="col-2">
-                    <td>
-                        <a asp-page="/LoginRegister/Login">Войти</a>
-                    </td>
-                    <td id="separator">|</td>
-                    <td>
-                        <a asp-page="/LoginRegister/Register">Регистрация</a>
-                    </td>
+                    @if (User.Claims.Count() > 0)
+                    {
+                        <td>
+                            <a asp-page="/LoginRegister/Account" asp-route-id="@User">@User.Claims.FirstOrDefault(x => x.Type == "userName")?.Value</a>
+                        </td>
+                        <td id="separator">|</td>
+                        <td>
+                            <a style="cursor: pointer" onclick="logout()">Выйти</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a asp-page="/LoginRegister/Login">Войти</a>
+                        </td>
+                        <td id="separator">|</td>
+                        <td>
+                            <a asp-page="/LoginRegister/Register">Регистрация</a>
+                        </td>
+                    }
+                  
+
                 </table>
             </div>
         </div>
