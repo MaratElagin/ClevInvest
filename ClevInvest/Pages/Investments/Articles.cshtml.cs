@@ -13,24 +13,26 @@ namespace ClevInvest.Pages.Investments
     public class Articles : PageModel
     {
         private readonly IArticleRepository _db;
-        
+
         public Articles(IArticleRepository db)
         {
             _db = db;
         }
 
         public IEnumerable<Article> ArticlesList { get; set; }
-        [BindProperty]
-        public string SearchText { get; set; }
+        [BindProperty] public string SearchText { get; set; }
+
         public void OnGet()
         {
             ArticlesList = _db.GetAll();
         }
-        
+
         public void OnPost()
         {
-            string _searchText = SearchText.ToLowerInvariant();
-            ArticlesList = _db.GetAll().Where(a => a.Title.ToLowerInvariant().Contains(_searchText));
+            string searchText = SearchText?.ToLowerInvariant();
+            ArticlesList = searchText == null
+                ? _db.GetAll()
+                : _db.GetAll().Where(a => a.Title.ToLowerInvariant().Contains(searchText));
         }
     }
 }

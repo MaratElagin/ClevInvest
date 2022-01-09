@@ -5,6 +5,7 @@
     ViewData["Title"] = "Article";
     var article = Model.Article;
     var photoPath = $"/images/Articles/{article.PhotoPath ?? "noimage.jpg"}";
+    var isAdmin = User.Claims.FirstOrDefault(x => x.Type == "role")?.Value == "Admin";
 }
 
 
@@ -36,25 +37,27 @@
     </div>
 </div>
 
-<div class="row pageText myBorderColor ml-2 mt-3">
+<div class="row pageText myBorderColor mt-3">
     <div id="descText">
         <p id="artId" class="d-none">@article.Id</p>
         <p class="mt-3" id="artDesc">
             @Html.Raw(article.Description)
         </p>
-        @if (User.Claims.Count() > 0 && @User.Claims.FirstOrDefault(x => x.Type == "role")?.Value == "Admin")
+
+        @if (isAdmin)
         {
-            <button type="button" onclick="openEdit()">Редактировать</button>
+            <button type="button" class="btn btn-primary" onclick="openEdit()">Редактировать</button>
         }
     </div>
-    @if (User.Claims.Count() > 0 && @User.Claims.FirstOrDefault(x => x.Type == "role")?.Value == "Admin")
+    @if (isAdmin)
     {
-        <form id="editForm" class="d-none">
-            <input id="editedDescr" name="description" class="bg-transparent border-0 pl-2 form-control" id="searchInput" type="text" placeholder="Поиск по статьям">
-            <button type="button" class="pr-2" onclick="editDescription()">
+        <form id="editForm" class="d-none w-100 pageText mt-2" method="post">
+            <button type="submit" class="btn btn-success mr-2 buttonWidth" onclick="editDescription()">
                 Сохранить
             </button>
-            <button type="button" onclick="closeEdit()">Отмена</button>
+            <button type="button" class="btn btn-danger buttonWidth" onclick="closeEdit()">Отмена</button>
+            <textarea id="editedDescr" class="bg-transparent mt-4 textareaBorder" name="description" type="text">
+            </textarea>
         </form>
     }
 </div>

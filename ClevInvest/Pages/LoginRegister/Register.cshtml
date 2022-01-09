@@ -6,6 +6,7 @@
     <div class="col-10 col-md-6 pageText justify-content-center">
         <form method="post">
             <div class="text-justify">
+                <p class="text-center text-danger">@Model.Error</p>
                 <div>
                     <label class="ml-2 mb-0">Имя пользователя</label>
                     <input asp-for="NewUser.UserName" name="NewUser.UserName" type="text" class="form-control inputStyle" autocomplete="new-password">
@@ -15,14 +16,6 @@
                     <label class="ml-2 mb-0 mt-2">Логин</label>
                     <input asp-for="NewUser.Login" name="NewUser.Login" type="text" class="form-control inputStyle" autocomplete="off">
                     <span asp-validation-for="NewUser.Login" class="text-danger ml-2"></span>
-                </div>
-                
-                <div class="form-group">
-                    <label class="ml-2" for="NewUser.Role">Роль</label>
-                    <select class="form-control inputStyle" name="NewUser.Role" id="NewUser.Role">
-                        <option class="p-0">User</option>
-                        <option class="p-0">Admin</option>
-                    </select>
                 </div>
                 <div>
                     <label class="ml-2 mb-0 mt-2">Пароль</label>

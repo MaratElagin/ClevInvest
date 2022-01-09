@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using ClevInvest.Models;
 using ClevInvest.Services.Database;
 using Microsoft.AspNetCore.Authorization;
@@ -11,25 +13,28 @@ namespace ClevInvest.Pages.Investments
     public class ArticlePage : PageModel
     {
         private readonly IArticleRepository _articleRepository;
+        private ApplicationContext _db;
 
-        public ArticlePage(IArticleRepository articleRepository)
+        public ArticlePage(ApplicationContext db, IArticleRepository articleRepository)
         {
             _articleRepository = articleRepository;
+            _db = db;
         }
 
-        [BindProperty]
-        public Article Article { get; set; }
+        [BindProperty] public Article Article { get; set; }
 
         public IActionResult OnGet(int id)
         {
-            Article = _articleRepository.GetArticle(id);
+            Article = _db.Articles.FirstOrDefault(a => a.Id == id);
             if (Article == null) return RedirectToPage("/NotFound");
             return Page();
         }
 
-        public void OnPost()
+        public IActionResult OnPost(string description)
         {
-            
+            _db.Articles.FirstOrDefault(a => a.Id == Article.Id).Description = description;
+            _db.SaveChanges();
+            return OnGet(Article.Id);
         }
     }
 }

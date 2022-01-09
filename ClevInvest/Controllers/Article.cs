@@ -23,12 +23,10 @@ namespace ClevInvest.Controllers
                 }
 
                 var req = JObject.Parse(body);
-                //await HttpContext.SignOutAsync();
                 var sReq = $"id={req["Id"]} Description={req["Description"]}";
-               // return Json(new {result = "ok", message = JsonSerializer.Serialize(article)});
                 return Json(new {result = "ok", message = sReq});
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return Json(new {result = "error", message = ex.Message});
             }

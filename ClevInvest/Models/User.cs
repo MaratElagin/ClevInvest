@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using ClevInvest.Infrastructure;
@@ -30,12 +31,13 @@ namespace ClevInvest.Models
         [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
         [MaxLength(10, ErrorMessage = Validation.MaxLengthMessage)]
         public string Password1 { get; set; }
-
+        
         [NotMapped]
         [Required(ErrorMessage = Validation.RequiredMessage)]
         [Compare(nameof(Password1), ErrorMessage = "Пароли должны совпадать")]
         public string Password2 { get; set; }
         
-        public string PhotoPath { get; set; }
+        public string UserPhoto { get; set; }
+        
     }
 }

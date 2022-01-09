@@ -12,9 +12,9 @@
             <p>Пароль</p>
         </div>
         <div class="col-md-4 col-4">
-            <input type="text" value="@Model.UserName" class="profileEdit">
-            <input type="text" class="profileEdit">
-            <input type="text" class="profileEdit">
+            <input type="text" value="@Model.AuthorizedUser.UserName" class="profileEdit">
+            <input type="text" value="@Model.AuthorizedUser.Login" class="profileEdit">
+            <input type="password" value="@Model.AuthorizedUser.Password1" class="profileEdit">
         </div>
     </div>
     <div class="col-md-3">

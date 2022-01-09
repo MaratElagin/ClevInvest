@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ClevInvest.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220104105109_Addrole")]
-    partial class Addrole
+    [Migration("20220106131211_Initdb")]
+    partial class Initdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,9 +32,6 @@ namespace ClevInvest.Migrations
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
-
-                    b.Property<string>("DescriptionFile")
                         .HasColumnType("text");
 
                     b.Property<string>("PhotoPath")
@@ -84,17 +81,23 @@ namespace ClevInvest.Migrations
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.Property<string>("Password1")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)");
 
                     b.Property<string>("Role")
                         .HasColumnType("text");
 
                     b.Property<string>("UserName")
                         .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("character varying(15)");
+
+                    b.Property<string>("UserPhoto")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

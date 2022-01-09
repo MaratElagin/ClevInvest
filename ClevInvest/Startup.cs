@@ -30,7 +30,7 @@ namespace ClevInvest
             services.AddDbContext<ApplicationContext>(options =>
                  options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             services.AddRazorPages();
-            services.AddScoped<IArticleRepository, MockArticleRepository>();
+            services.AddTransient<IArticleRepository, MockArticleRepository>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => //CookieAuthenticationOptions
                 {

@@ -22,7 +22,7 @@
 
 
 <div class="row mt-5">
-    @foreach (var item in Model.ArticlesList)
+    @foreach (var item in Model.ArticlesList.Take(6))
     {
         var photoPath = $"/images/Articles/{item.PhotoPath ?? "noimage.jpg"}";
 

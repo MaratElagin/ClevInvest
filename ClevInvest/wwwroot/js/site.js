@@ -9,25 +9,21 @@ function closeEdit() {
     document.getElementById('editForm').classList.add('d-none');
 }
 
-
 function editDescription() {
     var id = document.getElementById('artId').innerText;
     var descr = document.getElementById('editedDescr').value;
     $.ajax({
-
         url: "/api/article",
         // dataType: "json", // Для использования JSON формата получаемых данных
         method: "POST", // Что бы воспользоваться POST методом, меняем данную строку на POST   
-        data:  JSON.stringify({"Id": id, "Description": descr}),
+        data: JSON.stringify({"Id": id, "Description": descr}),
         contentType: "application/json",
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
             if (data.result == "ok") {
-                alert("Успешно");
-            document.getElementById('artDesc').innerHTML = descr;
-            closeEdit();
-        }
-                else {
+                document.getElementById('artDesc').innerHTML = descr;
+                closeEdit();
+            } else {
                 console.log(data);
             }
         },
@@ -39,12 +35,11 @@ function editDescription() {
 
 function logout() {
     $.ajax({
-
         url: "/api/session",
         // dataType: "json", // Для использования JSON формата получаемых данных
         method: "DELETE", // Что бы воспользоваться POST методом, меняем данную строку на POST
-        success: function(data) {
-            if(data.result == "ok")
+        success: function (data) {
+            if (data.result == "ok")
                 window.location.replace("/LoginRegister/Login");
             else {
                 console.log(data);
@@ -56,3 +51,4 @@ function logout() {
         }
     });
 }
+

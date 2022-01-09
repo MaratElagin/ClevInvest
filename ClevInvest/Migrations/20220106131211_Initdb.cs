@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace ClevInvest.Migrations
 {
-    public partial class Initdatabase : Migration
+    public partial class Initdb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,7 +16,7 @@ namespace ClevInvest.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    DescriptionFile = table.Column<string>(type: "text", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
                     UserId = table.Column<int>(type: "integer", nullable: false),
                     PhotoPath = table.Column<string>(type: "text", nullable: true),
                     Views = table.Column<int>(type: "integer", nullable: false)
@@ -47,9 +47,11 @@ namespace ClevInvest.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserName = table.Column<string>(type: "text", nullable: true),
-                    Login = table.Column<string>(type: "text", nullable: true),
-                    Password = table.Column<string>(type: "text", nullable: true)
+                    Role = table.Column<string>(type: "text", nullable: true),
+                    UserName = table.Column<string>(type: "character varying(15)", maxLength: 15, nullable: false),
+                    Login = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Password1 = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    UserPhoto = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {

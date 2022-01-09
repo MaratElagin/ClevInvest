@@ -38,7 +38,7 @@ namespace ClevInvest.Pages.LoginRegister
             var user = _db.Users.FirstOrDefault(u => u.Login == RegisteredUser.Login);
             if (user is null || user.Password1 != password)
             {
-                Error = "Неверный логин или пароль!";
+                Error = "Неверный логин или пароль";
                 return Page();
             }
 
