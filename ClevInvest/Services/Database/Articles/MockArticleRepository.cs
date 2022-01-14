@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClevInvest.Models;
 
-namespace ClevInvest.Services.Database
+namespace ClevInvest.Services.Database.Articles
 {
     public class MockArticleRepository : IArticleRepository
     {
@@ -14,7 +14,7 @@ namespace ClevInvest.Services.Database
         public MockArticleRepository(ApplicationContext db)
         {
             _db = db;
-            _articlesList = new List<Article>()
+            _articlesList = new()
             {
                 new Article
                 {
@@ -76,7 +76,7 @@ namespace ClevInvest.Services.Database
 
         public IEnumerable<Article> GetAll()
         {
-            if (!_db.Articles.Any()) FillDB();
+            if (!_db.Articles.Any()) FillDb();
             return _db.Articles.OrderBy(a=>a.Id);
         }
 
@@ -85,7 +85,7 @@ namespace ClevInvest.Services.Database
             return _db.Articles.FirstOrDefault(a => a.Id == id);
         }
 
-        public async Task FillDB()
+        public async Task FillDb()
         {
             foreach (var article in _articlesList)
                 if (!_db.Articles.Contains(article))

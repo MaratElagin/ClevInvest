@@ -29,35 +29,73 @@
             <p class="d-inline pageText labelForIcons">Просмотры: @article.Views</p>
         </div>
     </div>
-</div>
 
-<div class="row offset-1 no-gutters mt-4">
-    <div class="col-md-10">
-        <img src="@photoPath" alt="articleImage" class="imageStyle img-fluid">
+
+    <div class="row offset-1 no-gutters mt-4">
+        <div class="col-md-10">
+            <img src="@photoPath" alt="articleImage" class="imageStyle img-fluid">
+        </div>
     </div>
-</div>
 
-<div class="row pageText myBorderColor mt-3">
-    <div id="descText">
-        <p id="artId" class="d-none">@article.Id</p>
-        <p class="mt-3" id="artDesc">
-            @Html.Raw(article.Description)
-        </p>
+    <div class="row col-md-12 pageText myBorderColor mt-3 ml-0">
+        <div id="descText">
+            <p id="artId" class="d-none">@article.Id</p>
+            <div class="mt-3" id="artDesc">
+                @Html.Raw(article.Description)
+            </div>
 
+            @if (isAdmin)
+            {
+                <button type="button" class="btn btn-primary" onclick="openEdit()">Редактировать</button>
+            }
+        </div>
         @if (isAdmin)
         {
-            <button type="button" class="btn btn-primary" onclick="openEdit()">Редактировать</button>
+            <form id="editForm" class="d-none w-100 pageText mt-2" method="post">
+                <button type="submit" class="btn btn-success mr-2 buttonWidth" onclick="editDescription()">
+                    Сохранить
+                </button>
+                <button type="button" class="btn btn-danger buttonWidth" onclick="closeEdit()">Отмена</button>
+                <textarea id="editedDescr" class="bg-transparent mt-4 textareaBorder pt-1" name="description" type="text">
+            </textarea>
+            </form>
         }
     </div>
-    @if (isAdmin)
-    {
-        <form id="editForm" class="d-none w-100 pageText mt-2" method="post">
-            <button type="submit" class="btn btn-success mr-2 buttonWidth" onclick="editDescription()">
-                Сохранить
-            </button>
-            <button type="button" class="btn btn-danger buttonWidth" onclick="closeEdit()">Отмена</button>
-            <textarea id="editedDescr" class="bg-transparent mt-4 textareaBorder" name="description" type="text">
-            </textarea>
-        </form>
-    }
+
+    <div class="row col-md-12 no-gutters mt-5 pageText myBorderColor">
+        <section class="col-md-10">
+            <div>
+                <h4>Поделитесь своим мнением</h4>
+                <form id="addComment" class="d-flex flex-wrap mt-2 justify-content-end" method="post" asp-page-handler="Comment" asp-route-id="@article.Id">
+                    <textarea id="commentMessage" class="bg-transparent mt-4 textareaBorder pt-1" name="message" type="text"></textarea>
+                    <button type="submit" class="btn btn-success m-2 buttonWidth" onclick="addComent()">
+                        Отправить
+                    </button>
+                    <button type="button" class="btn btn-danger m-2 buttonWidth" onclick="CancelComment()">Отмена</button>
+                </form>
+            </div>
+        </section>
+        <h4 class="col-md-12 mt-5 myBorderColor">Комментарии пользователей</h4>
+        @foreach (var comment in Model.CommentsList)
+        {
+            var userPhotoPath = $"/images/avatars/{comment.User.UserPhoto ?? "noimage.png"}";
+            <div class="row col-md-12 mt-3">
+                <div class="col-md-1 pr-0">
+                    <img src="@userPhotoPath" class="img-fluid userCommentAvatar" alt="user-avatar">
+                </div>
+                <div class="col-md-2 pl-1 pr-2">
+                    <h5>@comment.User.UserName</h5>
+                    <div class="d-inline-flex align-items-center mt-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                        </svg>
+                        <p class="d-inline pageText labelForIcons">@comment.Date.ToString("d")</p>
+                    </div>
+                </div>
+                <div class="col-md-9 commentBorder">
+                    @comment.Message
+                </div>
+            </div>
+        }
+    </div>
 </div>

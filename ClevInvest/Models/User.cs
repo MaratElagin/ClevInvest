@@ -38,6 +38,5 @@ namespace ClevInvest.Models
         public string Password2 { get; set; }
         
         public string UserPhoto { get; set; }
-        
     }
 }

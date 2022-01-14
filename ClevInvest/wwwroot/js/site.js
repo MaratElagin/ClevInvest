@@ -33,6 +33,10 @@ function editDescription() {
     });
 }
 
+function CancelComment() {
+    document.getElementById('commentMessage').value = "";
+}
+
 function logout() {
     $.ajax({
         url: "/api/session",

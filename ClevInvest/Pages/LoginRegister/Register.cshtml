@@ -6,6 +6,7 @@
     <div class="col-10 col-md-6 pageText justify-content-center">
         <form method="post">
             <div class="text-justify">
+                <h1 class="text-center">Регистрация</h1>
                 <p class="text-center text-danger">@Model.Error</p>
                 <div>
                     <label class="ml-2 mb-0">Имя пользователя</label>
@@ -28,10 +29,15 @@
                     <span asp-validation-for="NewUser.Password2" class="text-danger ml-2"></span>
                 </div>
             </div>
-            <div class="modal-footer justify-content-center flex-wrap border-top-0">
-                <input type="submit" class="btn btn-primary w-100 btnRoundBorders" id="signUp" value="Зарегистрироваться">
+            <div class="modal-footer justify-content-center flex-wrap border-top-0 p-0">
+                <input type="submit" class="btn btn-primary w-100 btnRoundBorders" value="Зарегистрироваться">
                 <a class="mt-2" asp-page="LoginRegister/Login">Уже зарегестрированы?</a>
             </div>
         </form>
     </div>
 </div>
+
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial"></partial>
+}

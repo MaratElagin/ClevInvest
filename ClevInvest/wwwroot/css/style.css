@@ -158,6 +158,25 @@ textarea {
     border: 2px solid rgb(183, 183, 164) !important;
 }
 
+.myFont{
+    font-family: Montserrat Bold, "Open Sans", Helvetica, Arial, sans-serif;
+    font-style: normal;
+}
+
+.userCommentAvatar{
+    border: 2px solid #6B705C;
+    border-radius: 10px;
+}
+
+.commentBorder{
+    padding: 2px;
+    border: 1px solid #6B705C;
+    border-radius: 3px;
+}
+
+.myBorderBottom{
+    border-bottom: 1px solid #6B705C;
+}
 
 
 

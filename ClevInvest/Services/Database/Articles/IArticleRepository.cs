@@ -2,15 +2,15 @@
 using System.Threading.Tasks;
 using ClevInvest.Models;
 
-namespace ClevInvest.Services.Database
+namespace ClevInvest.Services.Database.Articles
 {
     public interface IArticleRepository
     {
         IEnumerable<Article> GetAll();
 
         Article GetArticle(int id);
-
-        Task FillDB();
+        
+        Task FillDb();
 
         Task AddArticle(Article article);
 

@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 namespace ClevInvest.Controllers
 {
     [Route("api/article")]
-    public class Article : Controller
+    public class ArticleController : Controller
     {
         [HttpPost]
         public async Task<object> Post()
