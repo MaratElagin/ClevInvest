@@ -33,7 +33,7 @@
 
     <div class="row offset-1 no-gutters mt-4">
         <div class="col-md-10">
-            <img src="@photoPath" alt="articleImage" class="imageStyle img-fluid">
+            <img src="@photoPath" alt="articleImage" class="imageStyle img-fluid" asp-append-version="true">
         </div>
     </div>
 
@@ -81,7 +81,7 @@
             var userPhotoPath = $"/images/avatars/{comment.User.UserPhoto ?? "noimage.png"}";
             <div class="row col-md-12 mt-3">
                 <div class="col-md-1 pr-0">
-                    <img src="@userPhotoPath" class="img-fluid userCommentAvatar" alt="user-avatar">
+                    <img src="@userPhotoPath" class="img-fluid userCommentAvatar" alt="user-avatar" asp-append-version="true">
                 </div>
                 <div class="col-md-2 pl-1 pr-2">
                     <h5>@comment.User.UserName</h5>

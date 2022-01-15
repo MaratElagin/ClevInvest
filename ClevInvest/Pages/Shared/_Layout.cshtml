@@ -1,5 +1,4 @@
-﻿@using System.Security.Claims
-@using Microsoft.AspNetCore.Http
+﻿@using ClevInvest.Pages.LoginRegister
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,8 +53,8 @@
                     </li>
                 </ul>
             </div>
-            
-            
+
+
             <div class="align-self-sm-baseline" id="login_register">
                 <table class="col-2">
                     @if (User.Claims.Count() > 0)
@@ -78,8 +77,6 @@
                             <a asp-page="/LoginRegister/Register" class="myFont">Регистрация</a>
                         </td>
                     }
-                  
-
                 </table>
             </div>
         </div>
@@ -102,6 +99,7 @@
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/profileEdit.js" asp-append-version="true"></script>
 
 @await RenderSectionAsync("Scripts", required: false)
 </body>

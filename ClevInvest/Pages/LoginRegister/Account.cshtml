@@ -1,25 +1,71 @@
 ﻿@page
 @model ClevInvest.Pages.LoginRegister.Account
+@{
+    var user = Model.AuthorizedUser;
+    var userPhoto = $"/images/avatars/{user.UserPhoto ?? "noimage.png"}";
+}
 
-<div class="row pageText">
-    <h1>Профиль</h1>
-</div>
-<div class="row pageText align-items-center">
-    <div class="row col-md-8 align-items-center">
-        <div class="col-md-4 col-3">
-            <p>Псевдоним</p>
-            <p>Логин</p>
-            <p>Пароль</p>
-        </div>
-        <div class="col-md-4 col-4">
-            <input type="text" value="@Model.AuthorizedUser.UserName" class="profileEdit">
-            <input type="text" value="@Model.AuthorizedUser.Login" class="profileEdit">
-            <input type="password" value="@Model.AuthorizedUser.Password1" class="profileEdit">
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="profileImg d-flex">
-            <img src="/images/avatars/avatar2.png" alt="profile picture">
+
+<div class="row justify-content-center m-3 pageText">
+    <div class="col-12 col-lg-8">
+        <div class="card" style="background-color: #ddbea9; border-radius: 10px;">
+            <div class="card-header">
+                <h1>Профиль</h1>
+            </div>
+            <div class="card-body text-center">
+                <form method="post" id="editPForm" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="AuthorizedUser.Id"/>
+                    <input type="hidden" asp-for="AuthorizedUser.Password1"/>
+                    <input type="hidden" asp-for="AuthorizedUser.Password2"/>
+                    <input type="hidden" asp-for="AuthorizedUser.Role"/>
+                    <input type="hidden" asp-for="AuthorizedUser.UserPhoto"/>
+                    <input type="hidden" asp-for="AuthorizedUser.Login"/>
+                    <div class="row">
+                        <div class="col col-lg-5 col-4">
+                            <div class="d-flex align-items-center mb-2 p-2 border-bottom">
+                                <h4 class="cardTextLeftFloating mb-0 mr-2">Псевдоним:</h4>
+                            </div>
+
+                            <div class="d-flex align-items-center mb-2 p-2 border-bottom">
+                                <h4 class="cardTextLeftFloating mb-0 mr-2">Логин:</h4>
+                            </div>
+                            <div class="d-flex align-items-center mb-2 p-2 border-bottom">
+                                <h4 class="cardTextLeftFloating mb-0 mr-2">Дата рождения:</h4>
+                            </div>
+                        </div>
+                        <div class="col col-lg-2 p-0 col-3">
+                            <div class="row mb-md-3">
+                                <input asp-for="AuthorizedUser.UserName" class="form-control accountInput" type="text" value="@user.UserName" autocomplete="new-password"/>
+                            </div>
+                            <div class="row mb-md-3 mb-sm-5">
+                                <input class="form-control loginInput" type="text" value="@user.Login"/>
+                            </div>
+                            <div class="row">
+                                <input asp-for="AuthorizedUser.BirthDate" class="form-control accountInput" type="text" value="@user.BirthDate" autocomplete="new-password"/>
+                                <span asp-validation-for="AuthorizedUser.BirthDate" class="text-danger ml-2"></span>
+                            </div>
+                        </div>
+                        <div class="col col-lg-5 col-5">
+                            <img class="card-img-top userProfileAvatar" src="@userPhoto" asp-append-version="true" alt="userPhoto" style="background-color: #d1e7ff">
+
+                            <div class="custom-file textSize p-0 d-none">
+                                <input asp-for="Photo" class="custom-file-input form-control p-0 accountInput"/>
+                                <label class="custom-file-label text-left pl-1">Загрузить</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                <button type="button" id="editProfile" class="btn btn-primary" onclick="edit()">Редактировать</button>
+                                <input type="submit" id="saveChanges" class="btn btn-success buttonWidth d-none" onclick="save()" value="Сохранить"/>
+                                <button type="button" id="cancel" class="btn btn-danger buttonWidth d-none" onclick="cancelEdit()">Отмена</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

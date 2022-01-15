@@ -14,6 +14,11 @@
                     <span asp-validation-for="NewUser.UserName" class="text-danger ml-2"></span>
                 </div>
                 <div>
+                    <label class="ml-2 mb-0">Дата рождения</label>
+                    <input asp-for="NewUser.BirthDate" type="text" class="form-control inputStyle" autocomplete="new-password">
+                    <span asp-validation-for="NewUser.BirthDate" class="text-danger ml-2"></span>
+                </div>
+                <div>
                     <label class="ml-2 mb-0 mt-2">Логин</label>
                     <input asp-for="NewUser.Login" name="NewUser.Login" type="text" class="form-control inputStyle" autocomplete="off">
                     <span asp-validation-for="NewUser.Login" class="text-danger ml-2"></span>

@@ -55,9 +55,9 @@ namespace ClevInvest.Services.Database.Articles
                 },
                 new Article
                 {
-                    Id = 6, Title = "Test. Преимущества и недостатки",
+                    Id = 6, Title = "Преимущества и недостатки",
                     Date = new DateTime(2021, 12, 23), UserId = 4,
-                    Views = 3
+                    Views = 3, PhotoPath = "Vavilon.jpg"
                 },
                 new Article
                 {

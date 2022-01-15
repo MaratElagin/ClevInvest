@@ -8,12 +8,12 @@ namespace ClevInvest.Pages.LoginRegister
         [Required(ErrorMessage = Validation.RequiredMessage)]
         [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
         [MaxLength(10, ErrorMessage = Validation.MaxLengthMessage)]
-        [RegularExpression(Validation.LatinLettersAndDigits,
+        [RegularExpression(Validation.LatinLettersAndDigitsReg,
             ErrorMessage = Validation.RegularExpressionMessage)]
         public string Login { get; set; }
 
         [Required(ErrorMessage = Validation.RequiredMessage)]
-        [RegularExpression(Validation.LatinLettersAndDigits,
+        [RegularExpression(Validation.LatinLettersAndDigitsReg,
             ErrorMessage = Validation.RegularExpressionMessage)]
         [MinLength(5, ErrorMessage = Validation.MinLengthMessage)]
         [MaxLength(10, ErrorMessage = Validation.MaxLengthMessage)]
